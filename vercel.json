@@ -1,8 +1,9 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
   "crons": [
     {
       "path": "/api/redis-aux?secret=Gargar",
-      "schedule": "20 17 * * *"
+      "schedule": "30 17 * * *"
     }
   ]
 }
