@@ -20,8 +20,8 @@ client.on('connect', () => {
   console.log('Conexión exitosa con Redis');
 });
 
-// El código es válido por 5 minutos (300 segundos)
-const duracion = 300;
+// El código es válido por 2 días (172800 segundos)
+const duracion = 172800;
 
 async function initializeRedis() {
     if (!client.isOpen) {
@@ -29,12 +29,12 @@ async function initializeRedis() {
     }
 }
 
-export async function guardarCodigoConfirmacion(email: string, codigo: string) {
+export async function guardarAux(titulo: string, codigo: string) {
     await initializeRedis();
-    const key = `confirmacion:${email}`;
+    const key = `confirmacion:${titulo}`;
   try {
-    await client.setEx(key, duracion, codigo);
-    console.log(`Código de confirmación guardado para ${email} con expiración de ${duracion} segundos.`);
+    await client.setEx(key, 172800, codigo);
+    console.log(`Código de confirmación guardado para ${titulo} con expiración de ${duracion} segundos.`);
   } catch (err) {
     console.error('Error al guardar el código de confirmación en Redis:', err);
   }
