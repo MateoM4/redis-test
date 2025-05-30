@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { guardarAux } from '@/services/redis'
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
-    if (req.query.secret !== process.env.EDIS_AUX_SECRET) {
+    if (req.query.secret !== process.env.REDIS_AUX_SECRET) {
         return res.status(403).json({ error: 'Unauthorized' })
     }
     //guarda un código random entre 1 y 1000 en Redis con la clave "aux"
