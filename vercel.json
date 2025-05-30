@@ -1,8 +1,0 @@
-{
-  "cron": [
-    {
-      "path": "/api/redis-aux?secret=Gargar",
-      "schedule": "* * * * *"
-    }
-  ]
-}
