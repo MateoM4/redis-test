@@ -20,8 +20,7 @@ client.on('connect', () => {
   console.log('Conexión exitosa con Redis');
 });
 
-// El código es válido por 2 días (172800 segundos)
-const duracion = 172800;
+
 
 async function initializeRedis() {
     if (!client.isOpen) {
@@ -33,6 +32,7 @@ export async function guardarAux(titulo: string, codigo: string) {
     await initializeRedis();
     const key = `${titulo}`;
   try {
+    // Guarda el código en Redis con una expiración de 48 horas (172800 segundos)
     await client.setEx(key, 172800, codigo);
     console.log(`AUX guardado en Redis: ${key} = ${codigo}`);
   } catch (err) {
