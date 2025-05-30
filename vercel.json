@@ -3,7 +3,7 @@
   "crons": [
     {
       "path": "/api/redis-aux?secret=Gargar",
-      "schedule": "45 17 * * *"
+      "schedule": "00 18 * * *"
     }
   ]
 }
