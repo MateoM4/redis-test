@@ -8,7 +8,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     //guarda un código random entre 1 y 1000 en Redis con la clave "aux"
     await guardarCodigoConfirmacion("aux", String(Math.floor(Math.random() * (1000 - 1 + 1)) + 1))
     res.status(200).json({ ok: true })
-  } catch (err) {
+  } catch{
     res.status(500).json({ error: 'Redis ping failed' })
   }
 }
