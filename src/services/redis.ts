@@ -31,11 +31,11 @@ async function initializeRedis() {
 
 export async function guardarAux(titulo: string, codigo: string) {
     await initializeRedis();
-    const key = `confirmacion:${titulo}`;
+    const key = `${titulo}`;
   try {
     await client.setEx(key, 172800, codigo);
-    console.log(`Código de confirmación guardado para ${titulo} con expiración de ${duracion} segundos.`);
+    console.log(`AUX guardado en Redis: ${key} = ${codigo}`);
   } catch (err) {
-    console.error('Error al guardar el código de confirmación en Redis:', err);
+    console.error('Error al guardar el AUX en Redis:', err);
   }
 }
